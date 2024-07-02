@@ -4,16 +4,9 @@ import { Alert } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 const CommentArea = (props) => {
-  // state = {
-  //   selected: false,
-  //   comments: [],
-  // };
-
-  const [selected, setSelected] = useState(false);
   const [comments, setComments] = useState([]);
 
   const fetchComments = async () => {
-    setSelected(true);
     try {
       const response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + props.asin, {
         headers: {
