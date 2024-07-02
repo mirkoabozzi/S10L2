@@ -22,6 +22,7 @@ const AddComment = (props) => {
       });
       if (response.ok) {
         console.log(response);
+        alert("Commento aggiunto con successo");
       } else {
         throw new Error("Errore nell'invio dei commenti");
       }
