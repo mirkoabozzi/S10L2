@@ -27,11 +27,14 @@ const CommentArea = (props) => {
   };
 
   useEffect(() => {
-    fetchComments();
+    if (props.asin > 0) {
+      fetchComments();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.asin]);
 
-  console.log(props.asin);
+  // console.log("asin",props.asin);
   return (
     <>
       <h2 className="mt-2">Commenti</h2>
