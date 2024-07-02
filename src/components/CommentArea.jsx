@@ -1,12 +1,14 @@
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
-import { Alert } from "react-bootstrap";
+import { Alert, Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 const CommentArea = (props) => {
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchComments = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + props.asin, {
         headers: {
@@ -23,6 +25,8 @@ const CommentArea = (props) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,8 +41,8 @@ const CommentArea = (props) => {
   // console.log("asin",props.asin);
   return (
     <>
-      <h2 className="mt-2">Commenti</h2>
-      {comments.length > 0 ? <CommentList fetchComments={fetchComments} comments={comments} /> : <Alert> Non ci sono commenti</Alert>}
+      <h2 className="mt-2">Commenti {isLoading && <Spinner animation="grow" />}</h2>
+      {comments.length > 0 ? <CommentList fetchComments={fetchComments} comments={comments} /> : <Alert> Seleziona un libro per visualizzare i commenti!</Alert>}
       {props.asin.length > 0 && <AddComment asin={props.asin} fetchComments={fetchComments} />}
     </>
   );
