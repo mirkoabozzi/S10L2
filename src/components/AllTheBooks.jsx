@@ -7,9 +7,6 @@ import scifiBookss from "../data/scifi.json";
 import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
 
 const AllTheBooks = () => {
-  // state = {
-  //   categorySelected: null,
-  // };
   const [categorySelected, setCategorySelected] = useState(null);
 
   return (

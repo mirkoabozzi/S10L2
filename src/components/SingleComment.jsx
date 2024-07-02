@@ -14,6 +14,7 @@ const SingleComment = (props) => {
       if (response.ok) {
         console.log(response);
         alert("Commento eliminato con successo");
+        props.fetchComments();
       } else {
         throw new Error("Errore nella rimozione del commento");
       }

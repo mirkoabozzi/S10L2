@@ -38,8 +38,8 @@ const CommentArea = (props) => {
   return (
     <>
       <h2 className="mt-2">Commenti</h2>
-      {comments.length > 0 ? <CommentList comments={comments} /> : <Alert> Non ci sono commenti</Alert>}
-      {props.asin.length > 0 && <AddComment asin={props.asin} />}
+      {comments.length > 0 ? <CommentList fetchComments={fetchComments} comments={comments} /> : <Alert> Non ci sono commenti</Alert>}
+      {props.asin.length > 0 && <AddComment asin={props.asin} fetchComments={fetchComments} />}
     </>
   );
 };
